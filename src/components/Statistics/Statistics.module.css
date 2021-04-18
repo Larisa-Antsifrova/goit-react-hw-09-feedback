@@ -1,0 +1,21 @@
+.statistics {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.good {
+  color: #388e3c;
+}
+
+.neutral {
+  color: #fbc02d;
+}
+
+.bad {
+  color: #ef5350;
+}
+
+.divider {
+  height: 1px;
+  background-color: #b2ebf2;
+}
