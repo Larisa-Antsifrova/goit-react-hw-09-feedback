@@ -1,9 +1,11 @@
+// React imports
 import React, { Component } from 'react';
+// Components imports
 import Section from './components/Section';
+import PageTitle from './components/PageTitle';
 import Statistics from './components/Statistics';
 import FeedbackOptions from './components/FeedbackOptions';
 import Notification from './components/Notification';
-import PageTitle from './components/PageTitle';
 
 class App extends Component {
   state = {
@@ -45,12 +47,14 @@ class App extends Component {
     return (
       <>
         <PageTitle title="Espresso Cafe Stats" />
+
         <Section title="Please leave your feedback">
           <FeedbackOptions
             options={['good', 'neutral', 'bad']}
             onLeaveFeedback={this.countFeedback}
           />
         </Section>
+
         <Section title="Statistics">
           {total ? (
             <Statistics
