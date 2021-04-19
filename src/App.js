@@ -12,8 +12,9 @@ class App extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    // avarage: 0,
-    // soso: 0,
+    avarage: 0,
+    soso: 0,
+    littleButton: 0,
   };
 
   countFeedback = event => {
@@ -46,7 +47,7 @@ class App extends Component {
 
         <Section title="Please leave your feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            feedback={this.state}
             onLeaveFeedback={this.countFeedback}
           />
         </Section>

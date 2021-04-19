@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 // Styles imports
 import styles from './FeedbackOptions.module.css';
 
-const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+const FeedbackOptions = ({ feedback, onLeaveFeedback }) => {
+  const options = Object.keys(feedback);
+
   return (
     <div className={styles.optionsContainer}>
       {options.map(option => {
@@ -14,7 +16,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
             key={option}
             name={option}
             onClick={onLeaveFeedback}
-            className={styles[option]}
+            className={styles[option] || styles.btn}
           >
             {option}
           </button>

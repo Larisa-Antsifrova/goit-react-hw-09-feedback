@@ -13,9 +13,16 @@
   font-weight: 700;
   text-transform: capitalize;
 
+  border: 1px solid #222222;
   border-radius: 7px;
-  border: none;
   outline: none;
+}
+
+.btn:hover {
+  color: #efefef;
+
+  border: 1px solid transparent;
+  background-color: #222222;
 }
 
 .good {
