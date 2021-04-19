@@ -12,6 +12,8 @@ class App extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
+    // avarage: 0,
+    // soso: 0,
   };
 
   countFeedback = event => {
@@ -23,14 +25,9 @@ class App extends Component {
   };
 
   countTotalFeedback = () => {
-    // If we know that no new fields for feedback category will be added
-    // Or if we know that new other fields might be added, but those fields should not be included in total
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
-
     // If we expect that new fields for feedback category might be added
     // And those fields should be included in total
-    // return Object.values(this.state).reduce((acc, value) => acc + value);
+    return Object.values(this.state).reduce((acc, value) => acc + value);
   };
 
   countPositiveFeedbackPercentage = () => {
@@ -40,7 +37,6 @@ class App extends Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
 
@@ -58,9 +54,7 @@ class App extends Component {
         <Section title="Statistics">
           {total ? (
             <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
+              feedback={this.state}
               total={total}
               positivePercentage={positivePercentage}
             />
