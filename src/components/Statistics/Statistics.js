@@ -11,7 +11,7 @@ const Statistics = ({ feedback, total, positivePercentage }) => {
   return (
     <div className={styles.statistics}>
       {feedbackOptions.map(feedbackOption => (
-        <p className={styles[feedbackOption]}>
+        <p key={feedbackOption} className={styles[feedbackOption]}>
           {feedbackOption}: {feedback[feedbackOption]}
         </p>
       ))}

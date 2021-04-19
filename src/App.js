@@ -1,5 +1,5 @@
 // React imports
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // Components imports
 import Section from './components/Section';
 import PageTitle from './components/PageTitle';
@@ -7,65 +7,88 @@ import Statistics from './components/Statistics';
 import FeedbackOptions from './components/FeedbackOptions';
 import Notification from './components/Notification';
 
-class App extends Component {
-  state = {
+const App = () => {
+  const [feedback, setFeedback] = useState({
     good: 0,
     neutral: 0,
     bad: 0,
-    avarage: 0,
-    soso: 0,
-    littleButton: 0,
-  };
+  });
 
-  countFeedback = event => {
+  const countFeedback = event => {
     const { name } = event.currentTarget;
-
-    this.setState(prevState => ({
-      [name]: prevState[name] + 1,
-    }));
+    setFeedback({ ...feedback, [name]: feedback[name] + 1 });
   };
 
-  countTotalFeedback = () => {
-    // If we expect that new fields for feedback category might be added
-    // And those fields should be included in total
-    return Object.values(this.state).reduce((acc, value) => acc + value);
+  const countTotalFeedback = () => {
+    return Object.values(feedback).reduce(
+      (total, quantity) => total + quantity,
+    );
   };
 
-  countPositiveFeedbackPercentage = () => {
-    return this.countTotalFeedback()
-      ? Math.round((this.state.good / this.countTotalFeedback()) * 100)
+  const countPositiveFeedbackPercentage = () => {
+    return countTotalFeedback()
+      ? Math.round((feedback.good / countTotalFeedback()) * 100)
       : 0;
   };
 
-  render() {
-    const total = this.countTotalFeedback();
-    const positivePercentage = this.countPositiveFeedbackPercentage();
+  const total = countTotalFeedback();
+  const positivePercentage = countPositiveFeedbackPercentage();
 
-    return (
-      <>
-        <PageTitle title="Espresso Cafe Stats" />
+  return (
+    <>
+      <PageTitle title="Espresso Cafe Stats" />
 
-        <Section title="Please leave your feedback">
-          <FeedbackOptions
-            feedback={this.state}
-            onLeaveFeedback={this.countFeedback}
+      <Section title="Please leave your feedback">
+        <FeedbackOptions feedback={feedback} onLeaveFeedback={countFeedback} />
+      </Section>
+
+      <Section title="Statistics">
+        {total ? (
+          <Statistics
+            feedback={feedback}
+            total={total}
+            positivePercentage={positivePercentage}
           />
-        </Section>
+        ) : (
+          <Notification message="No feedback given" />
+        )}
+      </Section>
+    </>
+  );
+};
 
-        <Section title="Statistics">
-          {total ? (
-            <Statistics
-              feedback={this.state}
-              total={total}
-              positivePercentage={positivePercentage}
-            />
-          ) : (
-            <Notification message="No feedback given" />
-          )}
-        </Section>
-      </>
-    );
-  }
-}
+// class App extends Component {
+//
+
+//   render() {
+//     const total = this.countTotalFeedback();
+//     const positivePercentage = this.countPositiveFeedbackPercentage();
+
+//     return (
+//       <>
+//         <PageTitle title="Espresso Cafe Stats" />
+
+//         <Section title="Please leave your feedback">
+//           <FeedbackOptions
+//             feedback={this.state}
+//             onLeaveFeedback={this.countFeedback}
+//           />
+//         </Section>
+
+//         <Section title="Statistics">
+//           {total ? (
+//             <Statistics
+//               feedback={this.state}
+//               total={total}
+//               positivePercentage={positivePercentage}
+//             />
+//           ) : (
+//             <Notification message="No feedback given" />
+//           )}
+//         </Section>
+//       </>
+//     );
+//   }
+// }
 
 export default App;
