@@ -1,5 +1,5 @@
 {
-  "name": "goit-react-hw-02-feedback",
+  "name": "goit-react-hw-09-feedback",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,7 +14,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.0"
   },
-  "homepage": "https://Larisa-Antsifrova.github.io/goit-react-hw-02-feedback",
+  "homepage": "https://Larisa-Antsifrova.github.io/goit-react-hw-09-feedback",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
