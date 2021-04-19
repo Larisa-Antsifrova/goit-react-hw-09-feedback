@@ -1,13 +1,14 @@
+// React imports
 import React from 'react';
+// Helpers imports
 import PropTypes from 'prop-types';
-
+// Styles imports
 import styles from './FeedbackOptions.module.css';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div className={styles.optionsContainer}>
       {options.map(option => {
-        const label = option[0].toUpperCase() + option.slice(1);
         return (
           <button
             key={option}
@@ -15,7 +16,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
             onClick={onLeaveFeedback}
             className={styles[option]}
           >
-            {label}
+            {option}
           </button>
         );
       })}
