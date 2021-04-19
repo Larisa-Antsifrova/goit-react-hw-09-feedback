@@ -16,7 +16,7 @@ const App = () => {
 
   const countFeedback = event => {
     const { name } = event.currentTarget;
-    setFeedback({ ...feedback, [name]: feedback[name] + 1 });
+    setFeedback(feedback => ({ ...feedback, [name]: feedback[name] + 1 }));
   };
 
   const countTotalFeedback = () => {
