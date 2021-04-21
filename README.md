@@ -1,2 +1,4 @@
-# goit-react-hw-09-feedback
-React Extra Homework. Module 9.
+# React Extra Homework. Module 9.
+
+Feedback widget with hooks.
+
